@@ -1,8 +1,17 @@
-# Verifier l etqt
+# Verifier l etat
+
+```
 git status
+```
+
+# qjout
 git add $FILE
 git add .
-git reset
+```
+git reset # annule l'ancien ajout
+```
+
+
 
 # Extrq
 clear
