@@ -63,6 +63,7 @@ git checkout $FILE
 
 # Extra
 commandes unix pratiques
+alt + tab pour changer de fenêtre boloss
 ```
 clear # permet d'effacer les lignes de code
 pwd # affiche le chemin du répertoire courant
