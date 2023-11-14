@@ -61,11 +61,11 @@ git checkout $FILE
 ```
 
 ## Extra
-commandes linux pratiques
+commandes unix pratiques
 ```
-clear
-pwd
-cd ~
+clear # permet d'effacer les lignes de code
+pwd # affiche le chemin du répertoire courant
+cd ~ # replace l'utilisateur à l'origine des répertoires
 ls # affiche les fichiers du répertoire courant
 ls -la # -l affiche la taille et les droits et -a affiche les fichiers cachés
 man # manuel des commandes
