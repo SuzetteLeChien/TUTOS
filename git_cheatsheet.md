@@ -1,17 +1,17 @@
-# ATTENTION toujours être à jour avec git
+# ATTENTION TOUJOURS ETRE A JOUR ENTRE GIT / VS
 
-## à chaque fois que j'ouvre github --> visual
+# A chaque fois que j'ouvre github --> visual
 ```shell
 git pull origin $BRANCH
 # souvent BRANCH = main mais faire gaffe à ce qu'on soit dans la bonne branche
 ```
 
-## Verifier l'état
+# Verifier l'état
 ```shell
 git status
 ```
 
-# Enregistrer des modifs de vs vers git en trosi étapes
+# Enregistrer des modifs de vs vers git en trois étapes
 ## (1) ajout (AVANT DE PUSH)
 Bien sûr s'assurer que les ajouts sont enregistrés sur vscode
 ```shell
@@ -33,35 +33,35 @@ git push origin $BRANCH
 ```
 
 
-## vérifier l'état de l'avancement
+# Vérifier l'état de l'avancement
 ```shell
 git log
 ```
 
-## créer une nouvelle branche
+# Créer une nouvelle branche
 partir d'une branche à jour (par ex main) suivi d'un git pull origin main
 ```shell
 git checkout -b $BRANCH
 ```
 
-## changer de branche
+# Changer de branche
 ```shell
 git checkout $BRANCH
 ```
 
-## voir les modifications faites depuis le dernier pull
+# Voir les modifications faites depuis le dernier pull
 ```shell
 git diff
 git diff $FILE
 ```
 
-## annuler toutes les mofifs vues par le git diff
+# Annuler toutes les mofifs vues par le git diff
 ```shell
 git checkout .
 git checkout $FILE
 ```
 
-## Extra
+# Extra
 commandes unix pratiques
 ```
 clear # permet d'effacer les lignes de code
