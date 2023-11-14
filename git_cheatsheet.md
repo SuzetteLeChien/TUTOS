@@ -4,7 +4,7 @@
 git pull origin $BRANCH
 ```
 
-# Verifier l etat
+# Verifier l'état
 ```shell
 git status
 ```
