@@ -11,6 +11,7 @@ git pull origin $BRANCH
 git status
 ```
 
+# Enregistrer des modifs de vs vers git en trosi étapes
 ## (1) ajout (AVANT DE PUSH)
 Bien sûr s'assurer que les ajouts sont enregistrés sur vscode
 ```shell
