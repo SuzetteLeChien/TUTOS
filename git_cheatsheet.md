@@ -1,6 +1,6 @@
 # ATTENTION TOUJOURS ETRE A JOUR ENTRE GIT / VS
 
-# A chaque fois que j'ouvre github --> visual
+# Enregistrer les modifs git VERS vscode
 ```shell
 git pull origin $BRANCH
 # souvent BRANCH = main mais faire gaffe à ce qu'on soit dans la bonne branche
@@ -26,7 +26,7 @@ git commit -m "message"
 # par ex update cheatsheet
 ```
 
-## (3) après un commit faire un push visual --> github
+## (3) Enregistrer les modifs vscode VERS git
 ```shell
 git push origin $BRANCH
 # attention à la branche
