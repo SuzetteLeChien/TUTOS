@@ -2,6 +2,7 @@
 ## à chaque fois que j'ouvre github --> visual
 ```shell
 git pull origin $BRANCH
+# souvent BRANCH = main mais faire gaffe à ce qu'on soit dans la bonne branche
 ```
 
 # Verifier l'état
@@ -10,6 +11,7 @@ git status
 ```
 
 # (1) ajout (AVANT DE PUSH)
+Bien sûr s'assurer que les ajouts sont enregistrés sur vscode
 ```shell
 git add $FILE
 git add . # tous les fichiers de git status en rouge
@@ -19,11 +21,13 @@ git reset # annule l'ancien ajout
 # (2) après un ajout faire un commit avec un message expliquant les modifs
 ```shell
 git commit -m "message"
+# par ex update cheatsheet
 ```
 
 # (3) après un commit faire un push visual --> github
 ```shell
 git push origin $BRANCH
+# attention à la branche
 ```
 
 
@@ -43,7 +47,7 @@ git checkout -b $BRANCH
 git checkout $BRANCH
 ```
 
-# voir les modifications qui ont été faites depuis le dernier pull
+# voir les modifications faites depuis le dernier pull
 ```shell
 git diff
 git diff $FILE
