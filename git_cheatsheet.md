@@ -6,6 +6,11 @@
 git pull origin $BRANCH
 # souvent BRANCH = main mais faire gaffe à ce qu'on soit dans la bonne branche
 ```
+# Récupérer git VERS vscode sans enregistrer
+```shell
+git fetch
+# pas trop compris
+```
 
 # Verifier l'état
 ```shell
@@ -18,12 +23,14 @@ Bien sûr s'assurer que les ajouts sont enregistrés sur vscode
 ```shell
 git add $FILE
 git add . # tous les fichiers de git status en rouge
+git add -p # demande si tu veux ajt les diff modifs
 git reset # annule l'ancien ajout
 ```
 
 ## (2) commit avec un message expliquant les modifs
 ```shell
 git commit -m "message"
+git commit -am "message" # ajoute et commit
 # par ex update cheatsheet
 ```
 
@@ -74,5 +81,6 @@ ls -la # -l affiche la taille et les droits et -a affiche les fichiers cachés
 man # manuel des commandes
 cp $FILEACOPIE $NEWFILE # copier un fichier
 rm $FILE # remove = supp
+ctrl+c # annule la commande (utile pour arrêter des boucles)
 ```
 
