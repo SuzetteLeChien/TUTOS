@@ -49,4 +49,8 @@ Résultats :
 | bleu          | rouge         | violet |
 | jaune         | bleu          | vert   |
 
+## Checkbox
+```
 - [ ]
+- [x] # checked
+```
