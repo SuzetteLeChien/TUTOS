@@ -32,8 +32,17 @@
 ## Image 
     ![alt text](image.jpg)
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+## Tableau
+```
+| Couleur1      | Couleur2      | Mix    |
+| ------------- |:-------------:| ------:|
+| rouge         | jaune         | orange |
+| bleu          | rouge         | violet |
+| jaune         | bleu          | vert   |
+```
+Résultats :
+| Couleur1      | Couleur2      | Mix    |
+| ------------- |:-------------:| ------:|
+| rouge         | jaune         | orange |
+| bleu          | rouge         | violet |
+| jaune         | bleu          | vert   |
