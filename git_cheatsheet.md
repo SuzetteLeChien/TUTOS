@@ -1,5 +1,5 @@
 # ATTENTION TOUJOURS ETRE A JOUR ENTRE GIT / VS
-# commencer par se placer dans le bon répertoire avec un <cd>
+### Commencer par se placer dans le bon répertoire avec un cd
 
 # Enregistrer les modifs git VERS vscode
 ```shell
