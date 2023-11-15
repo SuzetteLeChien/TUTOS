@@ -28,6 +28,7 @@
 
 ## Code
     `code`
+    ```multiple lines```
 
 ## Image 
     ![alt text](image.jpg)
