@@ -16,7 +16,14 @@
 ## Link
     [exemple](https://www.example.com)
 
-1. First
-2. Second
-- First 
-- Second
+## Ordered list
+    1. First
+    2. Second
+    3. Third
+
+## Ordered list
+    - First 
+    - Second
+    - Third
+
+`code`
