@@ -37,6 +37,7 @@ git commit -am "message" # ajoute et commit
 ## (3) Enregistrer les modifs vscode VERS git
 ```shell
 git push origin $BRANCH
+git push # dans la branche courante
 # attention à la branche
 ```
 
