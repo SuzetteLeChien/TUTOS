@@ -26,4 +26,7 @@
     - Second
     - Third
 
-`code`
+## Code
+    `code`
+
+![alt text](image.jpg)
