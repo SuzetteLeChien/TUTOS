@@ -72,11 +72,12 @@ git checkout $FILE
 ```
 
 # Sur vscode
+```
 On peut lire dans quel état se situe un fichier :
     U : unversioned
     A : added
     M : modified
     rien : dans le commit donc c'est bon
-
+```
 
 
