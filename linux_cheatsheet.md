@@ -23,4 +23,10 @@ rm $FILE # remove = supp
 ctrl+c # annule la commande (utile pour arrêter des boucles)
 
 cat $FILE # imprime le contenu du fichier dans le terminal
+
+nano $FILE # modifier un fichier dans le terminal
+           # si on change le nom du fichier crée une copie des modifications
+           # ^X = ctrl X
+
+vim $FILE # pareil que nano mais pas le guide des commandes donc plus difficiles
 ```
