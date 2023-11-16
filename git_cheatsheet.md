@@ -24,6 +24,7 @@ Bien sûr s'assurer que les ajouts sont enregistrés sur vscode
 git add $FILE
 git add . # tous les fichiers de git status en rouge
 git add -p # demande si tu veux ajt les diff modifs
+git remove $FILE # enlève le fichier qui a été add mais pas push
 git reset # annule l'ancien ajout
 ```
 
