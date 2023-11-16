@@ -2,7 +2,7 @@
 
 
 alt + tab pour changer de fenêtre boloss
-```
+``` bash
 clear # permet d'effacer les lignes de code
 pwd # affiche le chemin du répertoire courant
 cd ~ # à l'origine des dossiers de l'utilisateur actif dans le shell
