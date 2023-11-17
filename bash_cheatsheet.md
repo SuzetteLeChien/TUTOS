@@ -2,7 +2,7 @@
 
 
 alt + tab pour changer de fenêtre boloss
-``` zsh
+``` bash
 clear # permet d'effacer les lignes de code
 
 pwd # affiche le chemin du répertoire courant
