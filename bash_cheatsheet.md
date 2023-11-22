@@ -29,4 +29,7 @@ nano $FILE # modifier un fichier dans le terminal
            # ^X = ctrl X
 
 vim $FILE # pareil que nano mais pas le guide des commandes donc plus difficiles
+
+code $FILE # ouvre le fichier sur vscode
+           # si le fichier n'existe pas, le crée sur vscode
 ```
