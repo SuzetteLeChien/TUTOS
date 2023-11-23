@@ -18,11 +18,21 @@ man # manuel des commandes
 
 cp $FILEACOPIE $NEWFILE # copier un fichier
 
+mv $source $target # déplace la source dans la target
+                   # si target existe, remplace son contenu par source
+                   # target peut être un répertoire
+                   # crée un nv répertoire s'il n'existe pas
+
 rm $FILE # remove = supp
 
 ctrl+c # annule la commande (utile pour arrêter des boucles)
 
+file $FILE # affiche le type du fichier
+
 cat $FILE # imprime le contenu du fichier dans le terminal
+
+less $FILE # lit le contenu d'un fichier
+           # l'affiche page par page
 
 nano $FILE # modifier un fichier dans le terminal
            # si on change le nom du fichier crée une copie des modifications
