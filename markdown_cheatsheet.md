@@ -22,7 +22,7 @@
     2. Second
     3. Third
 
-## Ordered list
+## Unordered list
     - First 
     - Second
     - Third
