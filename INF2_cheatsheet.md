@@ -15,3 +15,8 @@ with open("file","w",encoding="utf-8") as f:
     # "t" Mode texte (par défaut)
     # "+" Ouverture en lecture + écriture
 ```
+| mode      | effet                                                            |
+| --------- |:----------------------------------------------------------------:|
+| "r"       | Lecture seule (par défaut), exception levée s’il n’existe pas    |
+| "w"       | Écriture seule, fichier écrasé s’il existe déjà                  |
+| "x"       | Création puis écriture, exception levée si le fichier existe déjà|
