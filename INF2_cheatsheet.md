@@ -4,9 +4,11 @@
 - fichiers binaires ou fichiers texte
 - Cycle de vie : Creation > Ouverture > Manipulation > Fermeture
 
-### ouvrir un fichier
+### ouvrir puis fermer un fichier
 ```python
 with open("file","w",encoding="utf-8") as f:
+    # code
+    f.close()
 ```
 | mode      | effet                                                            |
 | --------- |:----------------------------------------------------------------:|
@@ -17,3 +19,16 @@ with open("file","w",encoding="utf-8") as f:
 | "b"       | Mode binaire                                                     |
 | "t"       | Mode texte (par défaut)                                          |
 | "+"       | Ouverture en lecture + écriture                                  |
+
+### parcourir un texte
+```python
+for line in texte :
+    print(line)
+```
+
+### La fonction split
+- permet de transformer une chaîne de caractères en liste de caractères
+- le séparateur par défaut est l'espace mais on peut le mettre en paramètre de la fonction
+```python
+liste=line.split()
+```
