@@ -73,6 +73,11 @@ for dict_row in dict_reader:
     print(dict_row)
 ```
 
+### Créer un fichier csv à partir d'un dictionnaire
+```python
+dict.to_csv("file's name")
+```
+
 
 ### Module pandas
 - permet de manipuler des tableaux de données
@@ -82,6 +87,18 @@ for dict_row in dict_reader:
 inf2=pd.read_csv('file', delimiter=';')
 # chaque colonne est un dictionnaire
 ```
+- rajouter une clé en appliquant une fonction :
+```python
+dict['key']=dict.apply(function,axis=1) # pour chaque ligne
+dict['key']=dict.apply(function,axis=0) # pour chaque colonne
+```
+- pour chaque dictionnaire, pour vérifier si une case (une valeur) est vide :
+```python
+# renvoie un booléen
+# dictionnaire.nom de la clé (donc de la colonne)
+pd.isnull(etudiant.median)
+```
+
 
 ### Précisions sur le JSON
 #### Comment stocker et partager les données de mon programme (hors format tableur) ?
