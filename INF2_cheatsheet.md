@@ -1,4 +1,4 @@
-# CHEATSHEET INF2 : FINAUX
+#       CHEATSHEET INF2 : FINAUX
 
 ## Fichiers
 - fichiers binaires ou fichiers texte
@@ -76,3 +76,30 @@ for dict_row in dict_reader:
 
 ### Module pandas
 - permet de manipuler des tableaux de données
+
+- on peut ouvrir un fichier sans passer par open :
+```python
+inf2=pd.read_csv('file', delimiter=';')
+# chaque colonne est un dictionnaire
+```
+
+### Précisions sur le JSON
+#### Comment stocker et partager les données de mon programme (hors format tableur) ?
+- Le format JSON (JavaScript Object Notation) est un format d’échange de données très simple et répandu
+- Un objet JSON est une représentation sous forme de texte d’un objet
+- Un objet commence par ‘{‘ et termine par ‘}’
+
+
+## Gestion des fichiers
+- Retourne un booléen sur l'existence du chemin
+```python
+os.path.isfile(path)
+```
+- Vérifie que le chemin correspond à un dossier
+```python
+os.path.isdir(path)
+```
+- Récupérer le chemin absolu d'un fichier
+```python
+os.path.abspath(file)
+```
