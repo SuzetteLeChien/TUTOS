@@ -55,7 +55,7 @@ f.writelines("lines")
 - import csv
 
 ### Lire un fichier csv
-- attention, lesitems des listes sont tous des str même les nombres
+- attention, les items des listes sont tous des str même les nombres
 ```python
 valeurs=csv.reader(f,delimiter=',')
 # delimiter sépare les cellules
