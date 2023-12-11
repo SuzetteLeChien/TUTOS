@@ -120,3 +120,88 @@ os.path.isdir(path)
 ```python
 os.path.abspath(file)
 ```
+
+
+
+## Interfaces graphiques
+- application exécutée dans une unité d'interface graphique
+- interaction plus conviviale et intuitive
+- les widgets sont des objets graphiques rattachés à une fenêtre
+- le gestionnaire d'évènements est une boucle infinie qui exécute une focntion lorsqu'un évènement intervient
+
+```python
+def main():
+    ma_fenetre=Fenetre()
+    # code
+    ma_fenetre.mainloop()
+```
+
+### Callback
+- fonction passée en paramèter d'une autre fonction
+
+### Module Tkinter
+- classe Tk et collection de composants d'interface - graphique
+- Button (bouton poussoir)
+- Checkbutton (case à cocher)
+- Radiobutton (bouton radio)
+- Label (étiquette)
+- Entry (champ de texte en entrée)
+- Listbox (liste défilante)
+- tk_optionMenu (liste)
+- Menu (menu déroulant)
+- Menubutton (menu déroulant à partir d'un bouton)
+- Scale (curseur horizontal et vertical)
+- Spinbox (zone de sélection numérique)
+- Frame (cadre)
+- Labelframe (cadre avec titre)
+- Scrollbar (barre de défilement)
+- Panedwindow (panneau coulissant)
+- Text (conteneur hypertexte évolué)
+- Canvas (conteneur d'objets graphiques 2D évolué)
+- tk_chooseColor (sélecteur de couleur)
+- tk_chooseDirectory (sélecteur de répertoire)
+- tk_dialog (boîte de dialogue modale)
+- tk_getOpenFile (sélecteur de fichier)
+- tk_messageBox (boîte de message)
+- tk_popup (menu contextuel)
+
+```python
+import tkinter as tk
+fenetre=tk.Tk()
+fenetre.mainloop()
+```
+#### On utilise la fenêtre comme une classe
+```python
+class Fenetre(Tk):
+    def __init__(self):
+        Tk._init(self)
+```
+
+### Pour arrêter la fenêtre
+```python
+fenetre.destroy()
+fenetre.quit()
+```
+
+### Créer un bouton pour quitter
+```python
+def main():
+    fenetre = Tk()
+    label = Label(fenetre, text="cours de Python")
+    bouton = Button(fenetre, text="Quitter", fg="red",command=fenetre.des)
+    label.pack()
+    bouton.pack()
+    fenetre.mainloop()
+```
+
+### Placer la fenêtre au centre de l'écran
+```python
+def placer_fenetre_principale(self):
+    ecran_x = self.winfo_screenwidth()
+    ecran_y = self.winfo_screenheight()
+
+    fenetre_x, fenetre_y = self.largeur, self.hauteur
+    pos_x = ecran_x // 2 - fenetre_x // 2  # placement de la fenêtre par rapport au coin supérieur gauche
+    pos_y = ecran_y // 2 - fenetre_y // 2  # distance entre le haut de l'écran et le haut de la fenêtre Tk
+    self.geometry(f"{fenetre_x}x{fenetre_y}+{pos_x}+{pos_y}")
+```
