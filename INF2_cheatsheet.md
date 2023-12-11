@@ -205,3 +205,40 @@ def placer_fenetre_principale(self):
     pos_y = ecran_y // 2 - fenetre_y // 2  # distance entre le haut de l'écran et le haut de la fenêtre Tk
     self.geometry(f"{fenetre_x}x{fenetre_y}+{pos_x}+{pos_y}")
 ```
+
+### Titre de la fenêtre, attributs dans le init
+```python
+class Fenetre(Tk):
+    def __init__(self,l,h):
+        Tk.__init__(self)
+        self.title("title")
+        # placer la fenetre
+        self.placer_fenetre_principale()
+        # créer les labels
+        self.create_label()
+        # créer les bouttons
+        self.create_buttons()
+```
+
+### Modifier les attributs d'un bouton
+```python
+self.config(bg="yellow",relief="solid",borderwidth = 3)
+```
+
+### Classe Label
+- affichage d'un texte à position précise
+```python
+label=Label(ma_fenetre,text="Bienvenue")
+label.pack()
+```
+
+### Classe Button
+- lien entre une fonction et un clic
+```python
+bouton = Button(ma_fenetre,text="Bouton", command = self.ma_fonction)
+bouton.pack()
+
+bouton_quitter = Button(ma_fenetre, text ='Quitter', command = self.destroy)
+bouton_quitter.pack()
+```
+
