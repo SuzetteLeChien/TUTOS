@@ -242,3 +242,6 @@ bouton_quitter = Button(ma_fenetre, text ='Quitter', command = self.destroy)
 bouton_quitter.pack()
 ```
 
+## Bases de données
+- apprendre les requêtes sql
+- diagrammes UML
