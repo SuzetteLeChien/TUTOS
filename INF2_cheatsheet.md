@@ -92,11 +92,24 @@ inf2=pd.read_csv('file', delimiter=';')
 dict['key']=dict.apply(function,axis=1) # pour chaque ligne
 dict['key']=dict.apply(function,axis=0) # pour chaque colonne
 ```
+- rajouter une clé tout court
+```python
+# par exemple rajouter une colonne avec la somme des deux premières colonnes
+dict['key']=dict['c1']+dict['c2']
+```
+
 - pour chaque dictionnaire, pour vérifier si une case (une valeur) est vide :
 ```python
 # renvoie un booléen
 # dictionnaire.nom de la clé (donc de la colonne)
 pd.isnull(etudiant.median)
+```
+
+- trier le dictionnaire en fonction des valeurs
+```python
+# ascending --> valeurs (False=decr)
+# inplace --> modifie le dataframe dict
+dict.sort_values('nom_colonne',ascending=False,inplace=True)
 ```
 
 
