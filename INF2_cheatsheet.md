@@ -112,6 +112,11 @@ pd.isnull(etudiant.median)
 dict.sort_values('nom_colonne',ascending=False,inplace=True)
 ```
 
+- transformer un dictionnaire en fichier csv
+```python
+dict.to_csv('name.csv')
+```
+
 
 ### Précisions sur le JSON
 #### Comment stocker et partager les données de mon programme (hors format tableur) ?
