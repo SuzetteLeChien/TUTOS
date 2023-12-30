@@ -246,9 +246,31 @@ self.config(bg="yellow",relief="solid",borderwidth = 3)
 ### Classe Label
 - affichage d'un texte à position précise
 ```python
+# ma_fenetre = self si dans une classe
 label=Label(ma_fenetre,text="Bienvenue")
 label.pack()
 ```
+### méthode grid
+```python
+# si dans une méthode ne pas oublier self.label=Label()
+# puis self.label.grid()
+label.grid(row=1,column=4)
+```
+- attribut sticky dans la méthode grid
+```python
+label.grid(sticky='e')
+# n,s,o,e = position
+# par défaut place le label au milieu
+```
+
+- ocuuper plusieurs colonnes ou lignes
+```python
+# occupe 2 colonnes
+label.grid(columnspan=2)
+# occupe 3 lignes
+label.grid(rowspan=3)
+```
+
 
 ### Classe Button
 - lien entre une fonction et un clic
@@ -259,6 +281,32 @@ bouton.pack()
 bouton_quitter = Button(ma_fenetre, text ='Quitter', command = self.destroy)
 bouton_quitter.pack()
 ```
+
+- Marges autour du bouton ou label
+```python
+# marges côtés
+label.pack(padx=10)
+# marges dessus et dessous
+button.pack(pady=30)
+```
+
+- remplir un espace
+```python
+# remplir la largeur
+label.pack(fill=X, ipady=30)
+# remplir la longueur
+label.pack(fill=Y, ipadx=20)
+```
+
+### Classe Entry
+```python
+entry=Entry(ma_fenetre, relief='sunken',borderwidth=10, width=50)
+```
+- Récupérer la valeur d'un entry
+```python
+valeur = self.entry.get()
+```
+
 
 ## Bases de données
 - apprendre les requêtes sql
