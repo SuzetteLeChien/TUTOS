@@ -1,6 +1,6 @@
 #       CHEATSHEET INF2 : FINAUX
 
-## Fichiers
+## FICHIERS
 - fichiers binaires ou fichiers texte
 - Cycle de vie : Creation > Ouverture > Manipulation > Fermeture
 
@@ -51,7 +51,7 @@ f.writelines("lines")
 ```
 
 
-## CSV - comma separated values
+## CSV - COMMA SEPERATED VALUES
 - import csv
 
 ### Lire un fichier csv
@@ -125,7 +125,7 @@ dict.to_csv('name.csv')
 - Un objet commence par ‘{‘ et termine par ‘}’
 
 
-## Gestion des fichiers
+## GESTION DES FICHIERS
 - Retourne un booléen sur l'existence du chemin
 ```python
 os.path.isfile(path)
@@ -141,7 +141,7 @@ os.path.abspath(file)
 
 
 
-## Interfaces graphiques
+## INTERFACES GRAPHIQUES
 - application exécutée dans une unité d'interface graphique
 - interaction plus conviviale et intuitive
 - les widgets sont des objets graphiques rattachés à une fenêtre
@@ -307,7 +307,84 @@ entry=Entry(ma_fenetre, relief='sunken',borderwidth=10, width=50)
 valeur = self.entry.get()
 ```
 
+## CALCUL SCIENTIFIQUE, VISUALISATION
 
-## Bases de données
+- utiliser les modules numpy et matplotlip.pyplot
+
+### Les ndarray :
+Les tableaux de NumPy (ndarray):
+- taille fixe, éléments de même type
+- plus de méthodes
+- méthodes plus rapides et efficaces (implémentées en C)
+- 1Darray, 2Darray, 3Darray... le plus souvent tableau 2D
+
+### constructeur d'un tableau ndarray
+```python
+import numpy as np
+# par défaut permet de convertir des listes en tableau ndarray
+np.array(valeurs) 
+# exemple
+A=np.array([[1,2,3],[4,5,6]])
+```
+
+### attributs importants des ndarray
+
+| attribut  | description                                                      |
+| --------- |:----------------------------------------------------------------:|
+| size      | Nombres d’élements dans le tableau (fixe)                        |
+| dtype     | Type des éléments (unique)                                       |
+| shape     | Taille dans chacune des dimensions sous forme de tuple           |
+
+ex un cube avec des faces de 2x3 :
+- ndim = 3
+- shape = (2,3,2) (hauteur - largeur - profondeur)
+
+### méthodes / fonctions
+| méthode / fonction       |description                                                         |
+| ------------------------ |:------------------------------------------------------------------:|
+| copy()                   | copie                                                              |
+| np.hstack((A,B))         | Assemblage horizontal (nombres de lignes doivent être identiques)  |
+| np.vstack((A,B))         | Assemblage vertical (nombre de colonnes doivent être identiques)   |
+|np.concatene((A,B),axis=…)| Concaténation selon un axe (vertical axis = 0, horizontal axis = 1)|
+|np.unique()               | Retourne dans un tableau 1D les valeurs triées sans les doublons , |
+
+### méthodes de calcul
+```python
+# somme
+b.sum() # somme de toutes les valeurs
+b.sum(axis=0) # retourne une liste de la somme de chaque colonne
+# produit
+b.prod(axis=0)
+# min / max
+b.min() or b.max()
+# retourne l'indice du min
+b.argmin()
+# trier le tableau
+b.sort()
+```
+
+on peut aplliquer des fonctions mathématiques à chaque valeur :
+```python
+np.sin()
+np.cos()
+np.exp()
+np.log()
+```
+
+### Le broadcasting
+-  Mécanisme puissant qui consiste à étendre les dimensions d’un tableau 
+
+### Les masques booléens
+```python
+A = np.array([[1, 2, 3], [4, 5, 6]])
+B = A<5 # masque booléen
+A[A<5] = 10 # convertit les valeurs sélectionnées.
+```
+
+### Graphiques
+
+
+
+## BASES DE DONNEES
 - apprendre les requêtes sql
 - diagrammes UML
