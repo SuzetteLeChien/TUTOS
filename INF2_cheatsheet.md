@@ -340,6 +340,9 @@ ex un cube avec des faces de 2x3 :
 - shape = (2,3,2) (hauteur - largeur - profondeur)
 
 ### méthodes / fonctions
+- axis 1 = horizontal = à droite
+- axis 0 = vertical = en dessous
+
 | méthode / fonction       |description                                                         |
 | ------------------------ |:------------------------------------------------------------------:|
 | copy()                   | copie                                                              |
@@ -363,12 +366,30 @@ b.argmin()
 b.sort()
 ```
 
-on peut aplliquer des fonctions mathématiques à chaque valeur :
+on peut appliquer des fonctions mathématiques à chaque valeur :
 ```python
 np.sin()
 np.cos()
 np.exp()
 np.log()
+```
+
+- remplir un array avec des valeurs aléatoires
+```python
+# on peut mettre qu'une valeur 
+A = np.random.rand(n,m)
+# ou
+A = np.random.random((n, m))
+```
+- créer une matrice avec que des 1
+```python
+A=np.ones(lignes,colonnes)
+```
+
+- ajouter un cadre noir épais de 3 pixels
+```python
+# haut = bas = gauche = droite = noir
+A[:3, :] = A[-3:, :] = A[:, :3] = A[:, -3:] = 0
 ```
 
 ### Le broadcasting
@@ -382,8 +403,82 @@ A[A<5] = 10 # convertit les valeurs sélectionnées.
 ```
 
 ### Graphiques
+- module matplotlib.pyplot
 
+- afficher une image
+```python
+# à partir d'un ndarray A
+# cmap = gray -> noir et blanc
+plt.imshow(A, cmap="gray")
+# afficher la colorbar
+plt.colorbar()
+plt.show()
+```
 
+- afficher une figure
+```python
+plt.figure(figsize())
+plt.plot()
+# Extras (titre, axes, legendes)
+plt.show()
+```
+
+### Scipy
+```python
+# raton gris
+# si gray alors tableau 2D donc shape a deux arguments
+# sinon 3D donc 3 args avec taille du tableau RGB
+raton = datasets.face(gray=True)
+plt.imshow(raton, cmap='gray') # ou cmap='Greys'
+plt.show()
+```
+```python
+# obtenir dimensions
+l,c = raton.shape
+# zoom 1/4
+zoom=raton[l//4:l//4*3,c//4:c//4*3]
+```
+
+- afficher l'histogramme d'une image
+```python
+# ravel transforme la matrice en liste
+# bins = niveau de gris (répartit en fonction des valeurs des pixels)
+plt.hist(zoom.ravel(), bins=256)
+plt.title('histogramme du zoom')
+plt.show()
+```
+
+- faire un contraste
+```python
+# pixels les plus bas sur l'histo
+contraste[contraste<40]=0 
+# pixels les plus hauts sur l'histo
+contraste[contraste>200]=255
+```
+- répartir les couleurs sur l'histo
+```python
+val,nb=np.unique(zoom,return_counts=True)
+s=nb.cumsum(nb)
+total=zoom.size
+quatreniveaux=np.copy(zoom)
+
+for i in range(len(s)):
+    if s[i]<total//4:
+        quatreniveaux[zoom==val[i]]=0
+```
+ou sinon :
+```python
+s=np.cumsum(nb)
+i=0
+while s[i]<=total//4:
+    i+=1
+seuil_0=i
+# faire les autres while
+quatreniveaux[zoom<val[seuil_0]]=0
+quatreniveaux[(zoom>=val[seuil_0] and zoom<val[seuil_84])]=84
+# etc..
+
+```
 
 ## BASES DE DONNEES
 - apprendre les requêtes sql
