@@ -477,9 +477,70 @@ seuil_0=i
 quatreniveaux[zoom<val[seuil_0]]=0
 quatreniveaux[(zoom>=val[seuil_0] and zoom<val[seuil_84])]=84
 # etc..
+```
 
+### Ouverture d'un fichier png
+```python
+image=plt.imread('$FILE')
+plt.imshow(image)
+plt.title('image')
+plt.show()
+```
+
+### Canaux RGB
+```python
+# [:,:,x] = tt les lignes et colonnes pour x couleur 
+image[:,:,0] # rouge
+image[:,:,1] # vert
+image[:,:,2] # bleu
+# pour obtenir du jaune on enlève le bleu
+```
+
+- moyenne et écart-type
+```python
+A.mean(axis=1)
+A.std(axis=0)
+```
+### Opérations matricielles
+```python
+np.allclose() #retourne vrai si 2 éléments sont égaux à une tolérance près
+
+# produit matricielle
+A@B
+A.dot(B)
+
+#transposée
+A.T
+A.transpose()
+```
+
+### Créer une matrice aléatoire
+```python
+R = np.random.randint(xmin, xmax, (n_lignes, n_colonnes))
+```
+
+- matrice identité In,n
+```python
+I = np.eye(n)
 ```
 
 ## BASES DE DONNEES
 - apprendre les requêtes sql
 - diagrammes UML
+
+### étapes modélisation - conception :
+- diagramme conseptuel sans les clés
+- identifier les clés primaires
+- traiter les relations (types) et clés étrangères (nom clé vers nom table)
+- diagramme relationnel à l'écrit ou avec les tables dessinés (sans les relations)
+
+### Pour un type m-n :
+On peut créer une table de liaison entre les deux qui contient deux clés étrangères qui renvoient aux deux tables avec comme clé primaire le couple des deux clés étrangères.
+
+### diagramme relationnel
+```
+Table(#PK:int,nom:str,sexe:{F,M,N},FK->Table')
+tels attributs non nuls
+clés primaires soulignés
+```
+
