@@ -543,4 +543,82 @@ Table(#PK:int,nom:str,sexe:{F,M,N},FK->Table')
 tels attributs non nuls
 clés primaires soulignés
 ```
+### Utiliser le module sqlite3 sur python
+```python
+import sqlite3
 
+try :
+    connexion = sqlite3.connect('$FILE')
+    cursor = connexion.cursor()
+    cursor.execute("COMMAND SQL")
+    result=cursor.fetchall()
+    for element in result :
+        # code
+
+except sqlite3.Error as e :
+    print(e)
+
+finally :
+    cursor.close()
+    connexion.close()
+```
+### récupérer le contraire d'une commande
+```python
+cursor.execute("SELECT * FROM table WHERE NOT attribut=''")
+```
+
+### différents types de jointure
+- INNER JOIN : jointure interne pour retourner les enregistrements quand la condition est vrai dans les 2 tables. C’est l’une des jointures les plus communes
+- LEFT JOIN (ou LEFT OUTER JOIN) : jointure externe pour retourner tous les enregistrements de la table de gauche (LEFT = gauche) même si la condition n’est pas vérifié dans l’autre table.
+- RIGHT JOIN (ou RIGHT OUTER JOIN) : jointure externe pour retourner tous les enregistrements de la table de droite (RIGHT = droite) même si la condition n’est pas vérifié dans l’autre table.
+- FULL JOIN (ou FULL OUTER JOIN) : jointure externe pour retourner les résultats quand la condition est vrai dans au moins une des 2 tables.
+- SELF JOIN : permet d’effectuer une jointure d’une table avec elle-même comme si c’était une autre table.
+- UNION JOIN : jointure d’union
+
+### ajouter une info dans une table
+```python
+cursor.execute("INSERT INTO table (attribut1,attribut2) VALUES (value1,value2)")
+# quand on modifie la BDD
+connexion.commit()
+```
+
+### supprimer un élément de la BDD
+```python
+cursor.execute("DELETE FROM table WHERE attribut='...'")
+```
+
+### modifier la base de donnée
+```python
+cursor.execute("UPDATE table SET attribut1 = '...' WHERE attribut2='...'")
+connexion.commit()
+```
+
+### sous requête
+```python
+cursor.execute("UPDATE table SET attribut1=(SELECT etrangere FROM table 2 WHERE (...)) WHERE attribut2='...'")
+connexion.commit()
+```
+
+### mettre plusieurs conditions
+```sql
+WHERE (condition1 OR condition2);
+```
+
+### trier les valeurs
+```sql
+    # par ordre décroissant
+SELECT (...) ORDER BY attribut DESC;
+    # par ordre croissant
+SELECT (...) ORDER BY attribut ASC;
+```
+
+### pour ne pas afficher plusieurs fois des informations
+```sql
+SELECT DISTINCT attribut FROM table;
+```
+
+### faire un self JOIN
+```sql
+SELECT A.attribut AS attribut1, B.attribut AS attribut2
+FROM table A, table B   # même nom pour les deux tables
+```
