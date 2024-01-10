@@ -371,6 +371,9 @@ b.sort()
 
 # moyenne (en fonction de l'axe)
 b.mean()
+
+# retourne un tableau de la somme cumulée
+b.cumsum()
 ```
 
 on peut appliquer des fonctions mathématiques à chaque valeur :
@@ -388,6 +391,12 @@ A = np.random.rand(n,m)
 # ou
 A = np.random.random((n, m))
 ```
+
+- créer un tableau 1D avec rempli de valeurs qui se suivent
+```python
+x=np.arange($bornedebut,$bornefin,$pas)
+```
+
 - créer une matrice avec que des 1
 ```python
 A=np.ones(lignes,colonnes)
@@ -422,11 +431,16 @@ plt.colorbar()
 plt.show()
 ```
 
-- afficher une figure
+- afficher un graphique / figure
 ```python
-plt.figure(figsize())
-plt.plot()
-# Extras (titre, axes, legendes)
+# plusieurs courbe sur un graphique
+plt.figure()
+plt.plot(x, y1, c='green', label='label 1')
+plt.plot(x, y2, c='blue', label='label 2')
+plt.xlabel('x label')
+plt.title('title')
+plt.legend()
+plt.savefig('$file')
 plt.show()
 ```
 
@@ -588,6 +602,13 @@ cursor.execute("INSERT INTO table (attribut1,attribut2) VALUES (value1,value2)")
 # quand on modifie la BDD
 connexion.commit()
 ```
+### créer une table
+```python
+cursor.execute("CREATE TABLE IF NOT EXISTS table
+(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+label Enum [1, 2, 3] INTEGER NULL,
+FOREIGN KEY(table2_id) REFERENCES table2(id))") 
+```
 
 ### supprimer un élément de la BDD
 ```python
@@ -629,3 +650,7 @@ SELECT DISTINCT attribut FROM table;
 SELECT A.attribut AS attribut1, B.attribut AS attribut2
 FROM table A, table B   # même nom pour les deux tables
 ```
+
+
+## COURS
+- fonction callback : fonction qui est passée en argument à une autre fonction
