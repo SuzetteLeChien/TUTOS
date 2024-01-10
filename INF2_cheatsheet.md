@@ -654,3 +654,4 @@ FROM table A, table B   # même nom pour les deux tables
 
 ## COURS
 - fonction callback : fonction qui est passée en argument à une autre fonction
+- rajouter les qcm des annales et du groupe 
