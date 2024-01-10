@@ -145,7 +145,7 @@ os.path.abspath(file)
 - application exécutée dans une unité d'interface graphique
 - interaction plus conviviale et intuitive
 - les widgets sont des objets graphiques rattachés à une fenêtre
-- le gestionnaire d'évènements est une boucle infinie qui exécute une focntion lorsqu'un évènement intervient
+- le gestionnaire d'évènements est une boucle infinie qui exécute une fonction lorsqu'un évènement intervient
 
 ```python
 def main():
@@ -228,7 +228,7 @@ def placer_fenetre_principale(self):
 ```python
 class Fenetre(Tk):
     def __init__(self,l,h):
-        Tk.__init__(self)
+        super().__init__()
         self.title("title")
         # placer la fenetre
         self.placer_fenetre_principale()
@@ -270,6 +270,10 @@ label.grid(columnspan=2)
 # occupe 3 lignes
 label.grid(rowspan=3)
 ```
+- supprimer un label
+```python
+entree.delete (0, END)
+```
 
 
 ### Classe Button
@@ -301,10 +305,22 @@ label.pack(fill=Y, ipadx=20)
 ### Classe Entry
 ```python
 entry=Entry(ma_fenetre, relief='sunken',borderwidth=10, width=50)
+# vider un entry
+entry.config(text="")
 ```
 - Récupérer la valeur d'un entry
 ```python
 valeur = self.entry.get()
+```
+
+### Classe Canvas
+```python
+image = Canvas (self, width =400, height =240, bg = "ivory")
+```
+- création d'un objet photo
+```python
+self.photo = PhotoImage(file="figure.png")
+self.image.create_image(200, 120, image=self.photo)
 ```
 
 ## CALCUL SCIENTIFIQUE, VISUALISATION
@@ -392,7 +408,7 @@ A = np.random.rand(n,m)
 A = np.random.random((n, m))
 ```
 
-- créer un tableau 1D avec rempli de valeurs qui se suivent
+- créer un tableau 1D rempli de valeurs qui se suivent
 ```python
 x=np.arange($bornedebut,$bornefin,$pas)
 ```
@@ -400,6 +416,12 @@ x=np.arange($bornedebut,$bornefin,$pas)
 - créer une matrice avec que des 1
 ```python
 A=np.ones(lignes,colonnes)
+```
+
+- remplir de 0
+```python
+monde3D= np.zeros((dimx,dimy,dimz),dtype=int)
+monde3D[-1, :,:] = 4 # tout en 4
 ```
 
 - ajouter un cadre noir épais de 3 pixels
@@ -655,3 +677,4 @@ FROM table A, table B   # même nom pour les deux tables
 ## COURS
 - fonction callback : fonction qui est passée en argument à une autre fonction
 - rajouter les qcm des annales et du groupe 
+- random.choice([1,-1])
