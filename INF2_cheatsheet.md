@@ -9,7 +9,7 @@
 try :
     with open("path","w",encoding="utf-8") as f:
         # code
-        f.close()
+        # pas besoin de f.close() car compris dans le with
 except OSError as e:
     print(e)
 ```
