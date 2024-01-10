@@ -35,7 +35,7 @@ print(file.read())
 ```
 
 ### La fonction split
-- permet de transformer une chaîne de caractères en liste de caractères
+- permet de transformer une chaîne de mots en liste de mots
 - le séparateur par défaut est l'espace mais on peut le mettre en paramètre de la fonction
 ```python
 liste=line.split()
@@ -316,7 +316,7 @@ Les tableaux de NumPy (ndarray):
 - taille fixe, éléments de même type
 - plus de méthodes
 - méthodes plus rapides et efficaces (implémentées en C)
-- 1Darray, 2Darray, 3Darray... le plus souvent tableau 2D
+- 1Darray, 2Darray, 3Darray... le plus souvent tableau 2D (= tableau de tableau)
 
 ### constructeur d'un tableau ndarray
 ```python
@@ -356,14 +356,21 @@ ex un cube avec des faces de 2x3 :
 # somme
 b.sum() # somme de toutes les valeurs
 b.sum(axis=0) # retourne une liste de la somme de chaque colonne
+b.sum(axis=1) # liste de la somme de chaque ligne
 # produit
 b.prod(axis=0)
+
 # min / max
 b.min() or b.max()
+
 # retourne l'indice du min
 b.argmin()
+
 # trier le tableau
 b.sort()
+
+# moyenne (en fonction de l'axe)
+b.mean()
 ```
 
 on peut appliquer des fonctions mathématiques à chaque valeur :
