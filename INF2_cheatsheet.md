@@ -270,10 +270,7 @@ label.grid(columnspan=2)
 # occupe 3 lignes
 label.grid(rowspan=3)
 ```
-- supprimer un label
-```python
-entree.delete (0, END)
-```
+
 
 
 ### Classe Button
@@ -311,6 +308,10 @@ entry.config(text="")
 - Récupérer la valeur d'un entry
 ```python
 valeur = self.entry.get()
+```
+- supprimer une entrée
+```python
+entree.delete (0, END)
 ```
 
 ### Classe Canvas
