@@ -72,8 +72,21 @@ git checkout $FILE
 ```
 
 # permet de créer un dossier local du repo
+## se placer là où on veut copier le repo
 ```shell
 git clone git@github.com:SuzetteLeChien/nomdurepo.git
+```
+
+# créer un repo à partir d'un dossier local
+## se placer dans le dossier
+## le dossier doit être non vide
+```shell
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:SuzetteLeChien/nomdurepo.git
+git push -u origin main
 ```
 
 # Sur vscode
