@@ -71,6 +71,11 @@ git checkout .
 git checkout $FILE
 ```
 
+# permet de créer un dossier local du repo
+```shell
+git clone git@github.com:SuzetteLeChien/nomdurepo.git
+```
+
 # Sur vscode
 ```
 On peut lire dans quel état se situe un fichier :
