@@ -78,8 +78,8 @@ git clone git@github.com:SuzetteLeChien/nomdurepo.git
 ```
 
 # créer un repo à partir d'un dossier local
-## se placer dans le dossier
-## le dossier doit être non vide
+- se placer dans le dossier
+- le dossier doit être non vide
 ```shell
 git init
 git add .
