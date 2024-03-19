@@ -84,8 +84,10 @@ git clone git@github.com:SuzetteLeChien/nomdurepo.git
 git init
 git add .
 git commit -m "first commit"
-git branch -M main
+# aller sur git et créer un repo du même nom
+# taper ces trois commandes sur le terminal
 git remote add origin git@github.com:SuzetteLeChien/nomdurepo.git
+git branch -M main
 git push -u origin main
 ```
 
