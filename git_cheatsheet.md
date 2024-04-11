@@ -1,7 +1,7 @@
 # ATTENTION TOUJOURS ETRE A JOUR ENTRE GIT / VS
 ### Commencer par se placer dans le bon répertoire avec un cd
 
-# Enregistrer les modifs git VERS vscode
+# Enregistrer les modifs DE git VERS vscode
 ```shell
 git pull origin $BRANCH
 # souvent BRANCH = main mais faire gaffe à ce qu'on soit dans la bonne branche
@@ -17,7 +17,7 @@ git fetch
 git status
 ```
 
-# Enregistrer des modifs de vs vers git en trois étapes
+# Enregistrer des modifs DE vs VERS git en trois étapes
 ## (1) ajout (AVANT DE PUSH)
 Bien sûr s'assurer que les ajouts sont enregistrés sur vscode
 ```shell
