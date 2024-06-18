@@ -7,7 +7,7 @@
 git pull origin $BRANCH
 # souvent BRANCH = main mais faire gaffe à ce qu'on soit dans la bonne branche
 ```
-# Récupérer git VERS vscode sans enregistrer
+# Récupérer DE git VERS vscode sans enregistrer
 ```shell
 git fetch
 # pas trop compris
