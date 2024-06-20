@@ -92,6 +92,16 @@ git branch -M main
 git push -u origin main
 ```
 
+# Retirer un fichier git caché
+- se placer dans le dossier
+```shell
+rm -rf .git
+
+# on peut vérifier si le fichier git est toujours dans le dossier en se plaçant dans le répertoire d'avant puis :
+# ls -la $FOLDER
+```
+
+
 # Sur vscode
 ```
 On peut lire dans quel état se situe un fichier :
