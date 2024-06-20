@@ -114,4 +114,4 @@ On peut lire dans quel état se situe un fichier :
 # Erreurs à éviter
 ## 1) Créer un submodule sans faire exprès
 En copiant ou déplaçant un repo dans un autre repo on crée un submodule qu'on ne pourra pas ouvrir sur git et dont il sera compliqué d'afficher les modifications.
-Pour éviter ça il faut supprimer les fichier .git cachés dans les repo grâce aux commandes.
+Pour éviter ça il faut supprimer les fichier .git cachés dans les repo avant de les déplacer dans le repo principal et de les push.
