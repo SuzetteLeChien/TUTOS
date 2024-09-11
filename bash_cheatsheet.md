@@ -41,6 +41,10 @@ mv $SOURCE $TARGET
 ```bash
 rm $FILE
 ```
+## Supprimer un répertoire
+```bash
+rm -r $FILE
+```
 ## Annuler la commande
 ```bash
 ctrl+c # utile pour arrêter les boucles
