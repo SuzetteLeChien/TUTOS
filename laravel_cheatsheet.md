@@ -30,11 +30,35 @@ Laravel est hautement extensible grâce à son système de packages et de compos
 
 
 ## Dossier routes
+
 ### api.php
+- On y définit les routes spécifiques à l'API de l'appli. Ces routes utilisent un middleware spécifique ('api') qui est configuré pour les requêtes API. Cela permet de gérer des aspects comme l'authentification.
+- Le middleware 'api' est défini dans le fichier app/Http/Kerenel.php
+
 ### channels.php
+- On y définit les canaux de diffusion (broadcasting channels) pour les évènements en temps réel. Cela permet notamment de définir des règles d'autorisation pour les canaux de discussion.
+
 ### console.php
+- On y définit les commandes Artisan personnalisées
+
+exemple :
+```php
+Artisan::command('clean:cache', function () {
+    $this->call('cache:clear');
+    $this->call('config:cache');
+    $this->call('route:cache');
+    $this->call('view:cache');
+    $this->info('Cache cleared and recached successfully.');
+})->describe('Clear and recache all caches');
+```
+pour exécuter la commande on tape dans le terminal :
+```bash
+php artisan clean:cache
+```
+
 ### web.php
 - On y enregistre les routes web de notre application
+
 #### exemple :
 > cette route nous renvoie la vue 'welcome'
 ```php
@@ -64,11 +88,32 @@ Route::get('/nouvelleroute', function () {
 > La nouvelle route affichera la page nouvelle-vue.blade.php
 
 ## Architecture MVC
-### 
+### **Modèle**
+Récupère les données utilisées par l'application et les met à jour (que ce soit dans des fichiers ou dans la base de données).
+
+### **Vue**
+Affiche l'interface utilisateur et récupère les évènements (comme les clicks ou l'entrée au calvier).
+
+### **Contrôleur**
+Intermédiaire entre les deux : il est en charge de faire la liaison entre la vue et le modèle. C'est pour cela que l'on n'entrera jamais des requètes SQL directement dans le code de la vue.
+
+### Fonctionnement de base
+Après avoir fait une requète dans le navigateur, Laravel se retourne vers le fichier routes/web.php. Il trouve ensuite l'URl correspondant à la requète et appelle la méthode du controller indiqué.
 
 
 ## Commandes utiles
-> Obtenir la liste des routes définies
+
+### Afficher la liste des commandes disponibles
+```bash
+php artisan list
+```
+
+# Démarrer le serveur
+```bash
+php artisan serve
+```
+
+### Obtenir la liste des routes définies
 ```bash
 php artisan route:list
 ```
@@ -86,8 +131,59 @@ On peut également utiliser des options pour filtrer ou formater la sortie de la
 --method=GET #filtre les routes par méthode HTTP : ici GET
 --reverse #inverse l'ordre des routes
 ```
+ 
+  
+###  Créer un Controller
+```bash
+php artisan make:controller $NomDuController
+```
+Le controller est créé dans /app/Http/Controllers.
 
+### Créer un Modèle
+```bash
+php artisan make:model $NomDuModele
+```
+Le modèle est créé dans /app/Models.
 
+### Créer une nouvelle commande artisan
+```bash
+php artisan make:commande $NomDeLaCommande
+```
+
+###  Créer une nouvelle migration de base de données
+```bash
+php artisan make:migration $NomDeLaMigration
+```
+
+### Exécute toutes les migrations en attente
+```bash
+php artisan migrate
+```
+
+### Annule la dernièrte migration exécutée
+```bash
+php artisan migrate:fresh
+```
+
+### Pour interagir avec l'appli en temps réel
+```bash
+php artisan tinker
+```
+
+### Vider le cache de l'application
+```bash
+php artisan cache:clear
+```
+
+### Mettre l'appli en mode maintenance
+```bash
+php artisan down
+```
+
+### Remettre l'appli en ligne
+```bash
+php artisan up
+```
 
 
 
