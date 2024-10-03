@@ -31,14 +31,14 @@ Laravel est hautement extensible grâce à son système de packages et de compos
 
 ## Dossier routes
 
-### api.php
+### **api.php**
 - On y définit les routes spécifiques à l'API de l'appli. Ces routes utilisent un middleware spécifique ('api') qui est configuré pour les requêtes API. Cela permet de gérer des aspects comme l'authentification.
 - Le middleware 'api' est défini dans le fichier app/Http/Kerenel.php
 
-### channels.php
+### **channels.php**
 - On y définit les canaux de diffusion (broadcasting channels) pour les évènements en temps réel. Cela permet notamment de définir des règles d'autorisation pour les canaux de discussion.
 
-### console.php
+### **console.php**
 - On y définit les commandes Artisan personnalisées
 
 exemple :
@@ -56,7 +56,7 @@ pour exécuter la commande on tape dans le terminal :
 php artisan clean:cache
 ```
 
-### web.php
+### **web.php**
 - On y enregistre les routes web de notre application
 
 #### exemple :
@@ -108,7 +108,7 @@ Après avoir fait une requète dans le navigateur, Laravel se retourne vers le f
 php artisan list
 ```
 
-# Démarrer le serveur
+### Démarrer le serveur
 ```bash
 php artisan serve
 ```
