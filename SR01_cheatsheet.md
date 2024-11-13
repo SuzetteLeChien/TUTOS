@@ -17,6 +17,53 @@ typedef struct name{
 typedef struct name NewName;
 ```
 
+### Exemple de structure et pointeur sur structure
+```C
+// STRUCTURE ELEMENT
+struct Element {
+    int col;
+    int val;
+    struct Element *suivant;
+} ;
+typedef struct Element element;
+
+
+// TYPE LISTE_LIGNE
+typedef element *liste_ligne;
+
+
+// STRUCTURE MATRICE CREUSE
+struct MatriceCreuse {
+    int Nlignes;
+    int Ncolonnes;
+    liste_ligne *tab_lignes;
+} ;
+typedef struct MatriceCreuse matrice_creuse;
+```
+
+### Exemple de malloc
+```C
+// on alloue de l'espace pour un tableau de pointeurs de taille l
+int **tab=(int **)malloc(l * sizeof(int *));
+
+// on alloue de l'espace pour chaque ligne
+for (int i = 0; i < l; i++)
+{
+    tab[i]=(int *)malloc(c *sizeof(int));
+}
+
+// 3D
+int ***tab(int ***)malloc(d1*sizeof(int **));
+for(int i=0;i<d1;i++){
+	tab[i]=(int **)malloc(d2*sizeof(int *));
+
+	for(int j=0;j<d2;j++){
+		tab[i][j]=(int *)malloc(d3*sizeof(int));
+	}
+}
+
+```
+
 ### do while
 ```c
 do{
@@ -182,6 +229,9 @@ if (strcmp(argv[1],"-a")==0)
 
 // 3) convertir char en float
 atof(argv[i]); // renvoie un double
+
+// trouver taille d'un tableau
+#define TAILLE(tableau) (sizeof(tableau) / sizeof((tableau)[0]))
 ```
 
 ### Fonction avec matrice en paramètres
@@ -241,5 +291,43 @@ C'est un processus complexe :
 - STATIQUE = fait une copie de toutes les fonctions des bibliothèques utilisées
 - DYNAMIQUE = copie juste le nom de la bibliothèque et compile au moment de l'exécution (-lm)
 
+## Exemple d'annales
+```C
+// triangle de Pascal --> affichage pyramide
+for(i=0;i<nbL;i++){
+	for(j=0;j<t[i]->nl;j++){
+		printf("%3d",t[i]->tab[min(j,i-j)]);}}
+
+// min to maj
+chaine[i]=chaine[i]+('a'-'A');
+
+// Retourne le nombre de caractères sans le '\0'.
+strlen(chaine)
+
+// tableau
+t[i][j]=1 ;
+*(t[i]+j)=1;
+*(*(t+i)+j)=1;
+
+// pointeurs
+int arr[] = {1, 2, 3, 4, 5};
+int *ptr = arr;
+int *pt = arr;
+int a = *ptr++;
+int b = ++*pt;
+- Sachant que l’adresse du tableau arr est ox10 et un entier est codé sur 4 octets
+donnez les valeur de a, ptr, *ptr, b, pt, arr
+• a = 1
+• ptr = Adresse du deuxième élément du tableau arr (0x10 + 4 = 0x14)
+• *ptr = 2
+• b = 2
+• pt = Adresse du premier élément du tableau arr (0x10)
+• arr = Adresse du début du tableau arr (0x10) 
+```
+
+- ATTENTION --> possible de définir une fonction après le main si déclarée avant
+- %s avec pointeur sur chaîne de caractère imprime la chaîne de caractère en entier (sans *)
+- %s avec autre chose qu'un pointeur vers caractère renvoie une erreur
+- d'abord accès aux champs d'une structure puis opération
 
 
