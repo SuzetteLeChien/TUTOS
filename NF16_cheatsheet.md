@@ -197,7 +197,9 @@ pred[tete[L]]=nil[L]
 
 #### TABLEAU TRIE
 
-- Recherche :  
+- Recherche :
+
+
 | Algo                  | itérations |
 | --------------------- |:----------:|
 | séquentiel            | n          |
@@ -205,7 +207,7 @@ pred[tete[L]]=nil[L]
 | dichotomique récursif | log2(n)    |
 
 - invariants de la recherche dichotomique :
-> 1 <= g <= d <= N
+> 1 <= g <= d <= N  
 > T[i] <= x <= T[j]
 
 #### PILE
