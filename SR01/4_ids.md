@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
     return 0;
 }
 ```
-- on obtient deux id 3727 (chil porcess) et 3722 (main process)
+- on obtient deux id 3727 (child process) et 3722 (main process)
 
 ## getppid
 ```c
@@ -44,7 +44,7 @@ id=3778 parent=3772
 
 int main(int argc, char *argv[]){
     int id=fork();
-    if(id==0){ // chil process
+    if(id==0){ // child process
         sleep(1); // wait for 1 sec
     }
     printf("id=%d parent=%d\n",getpid(),getppid());
@@ -52,8 +52,8 @@ int main(int argc, char *argv[]){
 }
 ```
 - l'id du pere du child process ne correspond plus à l'id du main process
-- un nouveau père a été assigné au chil process car le parent est mort avant l'exécution du fils
-- la commande kill ne va plus pouvoir supprimer la mémoire du chil process qui est un zombie process
+- un nouveau père a été assigné au child process car le parent est mort avant l'exécution du fils
+- la commande kill ne va plus pouvoir supprimer la mémoire du child process qui est un zombie process
 
 ## forcer l'attente du père
 ```c
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]){
 
 int main(int argc, char *argv[]){
     int id=fork();
-    if(id==0){ // chil process
+    if(id==0){ // child process
         sleep(1); // wait for 1 sec
     }
     printf("id=%d parent=%d\n",getpid(),getppid());
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]){
     return 0;
 }
 ```
-- le main process s'affiche en premier mais attend quand même le chil process avant de die
+- le main process s'affiche en premier mais attend quand même le child process avant de die
 
 ## wait fonctionne sans vérifier l'id
 ```c
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
 
 int main(int argc, char *argv[]){
     int id=fork();
-    if(id==0){ // chil process
+    if(id==0){ // child process
         sleep(1); // wait for 1 sec
     }
     printf("id=%d parent=%d\n",getpid(),getppid());
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]){
 }
 ```
 - le main s'affiche en premier
-- on a ensuite le chil puis la ligne "no children to wait for"
+- on a ensuite le child puis la ligne "no children to wait for"
 - wait renvoie -1 en cas d'erreur
 
 ## return du wait
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]){
 
 int main(int argc, char *argv[]){
     int id=fork();
-    if(id==0){ // chil process
+    if(id==0){ // child process
         sleep(1); // wait for 1 sec
     }
     printf("id=%d parent=%d\n",getpid(),getppid());
@@ -120,9 +120,9 @@ int main(int argc, char *argv[]){
 }
 ```
 - d'abord main process
-- ensuite chil process
+- ensuite child process
 - ensuite "no children to wait for"
 - ensuite "{id du child} finished execution"
 
-Wait renvoie donc l'id du process qu'on est a attendu  
+Wait renvoie donc l'id du process qu'on a attendu  
 --> usefull when you deal with multiple child processes
