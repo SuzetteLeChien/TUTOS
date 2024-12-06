@@ -53,3 +53,19 @@ if(id==-1){
     return 1;
 }
 ```
+
+- on utilise des pipe entre des process de même hiérarchie
+
+## Attention
+### two way communication between processes
+Si on read et write dans chaque process, un des deux peut aller plus vite que l'autre et l'autre ne recevra jamais l'information du pipe.
+
+Pour régler ce problème on peut créer deux pipes :
+```c
+int p1[2]; // child to parent
+int p2[2]; // parent to child
+```
+- p1 : child only writes, parent only reads
+- p2 : child only reads, parent only writes
+
+--> permet d'éviter les conflits
