@@ -127,7 +127,36 @@ Rotgd ( x : Noeud ; Delta : entier )
         Delta := Delta + D2 // Delta total
         retourner z // z est la racine
 ```
+#### Insérer un noeud puis équilibrer un AVL
+```
+insere_avl(x:Noeud, n:Noeud, delta:entier):
+	si x = NIL:
+		delta:=1
+		retourner n
+	
+	delta:=0
+	si (cle[n] < cle[x]):
+		gauche[x]:=insere_avl(gauche[x], n, D1)
+		 si(eq[x]>0 ou (eq[x]=0 et D1=1)):
+			delta:=D1
+		eq[x] := eq[x] + D1
 
+	si (cle[n] > cle[x]):
+		droit[x]:=insere_avl(droit[x], n , D1)
+		si(eq[x]<0 ou (eq[x]=0 et D1=1)):
+			delta:=D1
+		eq[x] := eq[x] - D1
+
+	si |eq[x]|=2:
+		x:=Reequilibre(x, D2)
+		delta := delta + D2
+```
+Complexité :  
+- Insertion du sommet / descente : O(h)
+- Rechercher du sommet |eq[x]| / remontée : O(h)
+- équilibre : O(1)
+
+> L'algo est en O(h) --> dans un AVL on a h<1.44log2(n) donc O(log2n)
 
 ### Passer de string à integer
 ```c 
