@@ -6,9 +6,9 @@ On peut créer un objet d'une structure dans une fonction sans utiliser de mallo
 ### structure FILE
 ```c
 typedef struct file {
-int tab [ MAXF ];
-int tete ; // Premier element a defiler
-int queue ; // Premier emplacement libre
+    int tab [ MAXF ];
+    int tete ; // Premier element a defiler
+    int queue ; // Premier emplacement libre
 } file ;
 ```
 - La file est vide si tete==queue
@@ -18,8 +18,8 @@ int queue ; // Premier emplacement libre
 ### structure PILE
 ```c
 typedef struct pile {
-int sommet ; // Indice de l ’ element au sommet de la pile
-int tab [ MAXP ];
+    int sommet ; // Indice de l ’ element au sommet de la pile
+    int tab [ MAXP ];
 } pile ;
 ```
 
