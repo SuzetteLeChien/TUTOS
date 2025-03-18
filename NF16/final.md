@@ -100,9 +100,14 @@ nœud *Rotg(*nœud N){
 }
 ```
 
-#### Variation hauteur d'un noeud après Rotation
+#### Variation hauteur d'un noeud après Rotation (droite)
 h'(v)=h(v)+DELTA si h(g)>h(d) ou (h(g)=h(d) et DELTA=1)  
-      0 sinon
+      0 sinon  
+
+or DELTA = 
+- -1 si h(B)>max(h(D),h(C))
+- 1 si h(D)>max(h(B),h(C))
+- 0 sinon
 
 h=1+max(1+h(B),1+h(C),h(D))  
 h'=1+max(h(B),1+h(C),1+h(D))
@@ -125,6 +130,24 @@ enraciner(r:Racine; e:entier)
 h(gauche[x])-h(droit[x])
 
 eqx=1 + max(h(B),h(C)) - h(D)
+
+#### Rotd qui retourne DELTA
+```
+Rotd ( x : Noeud ; Delta : entier )
+// ...
+    eqx := eq [ x ]
+    eqy := eq [ y ]
+    eq [ x ] := eqx -1 - max (0 , eqy )
+    Si eq [ x ] >= 0
+        eq [ y ] := eqy -1
+    Sinon
+        eq [ y ] := eqx -2+ min (0 , eqy )
+    Delta := 0
+    Si eqx <= 0
+        Delta := 1
+    Si eq [ y ] >=0
+        Delta := -1
+```
 
 #### Rotation gauche droite
 - CNS : X a un fils gauche Y et Y a un fils droit Z
@@ -206,8 +229,8 @@ while(expression[k]>='0' && expression[k]<='0'){
 1) Une liste triée représente TOUJOURS un tas
 2) UN tas ne représente PAS TOUJOURS une liste triée
 
-> NOMBRE DE NOEUD MIN : 2**(h-1) +1
-> NOMBRE DE NOEUX MAX : 2**h
+> NOMBRE DE NOEUD MIN : 2**h  
+> NOMBRE DE NOEUX MAX : 2**(h+1)-1
 
 - entasser un tas max : **O(log n)**  
 --> car parcourt de la racine aux feuilles donc O(h), or 
@@ -247,18 +270,28 @@ void construire(int arr[], int n)[
 - supprimer le max : **O(log n)**
 ```c
 void supprimer_max(int arr[], int *n){
-	if(*n==0){
-		printf("tas vide");
-	}
-	else if(*n==1){
-		(*n)--;
-		return arr[0];
-	}
 	int max=arr[0]; // le max est la racine
-	arr[0]=arr[n-1];
+	arr[0]=arr[n-1]; // on remplace par la dernière feuille
 	(*n)--;
 	entasser(arr, n, 0);
 	return max;
+}
+```
+#### Insérer une valeur (tas min)
+```c
+void insérer(int *arr[], int *n, int val){
+	// on commence par insérer à la fin
+	arr[*n]=&val;
+	*n++;
+	
+	// ensuite on remonte tant que le père est plus grand
+	int i=*n-1; // indice nouvel élément
+	while(i>0 && arr[i]<arr[(i-1)/2]){
+		int temp = arr[i];
+		arr[i]=arr[(i-1)/2];
+		arr[(i-1)/2]=temp;
+		i=(i-1)/2;
+	}
 }
 ```
 
@@ -328,6 +361,40 @@ C(n)=0 (si n<=1) sinon (n-1)+C(n-1)
 donc C(n) = somme de k=1 à n-1(k) = (n(n-1))/2  
 Donc O(n^2)
 
+#### TRI PAR DENOMBREMENT
+```
+Tri_Dénombrement(A,B,k)
+    Pour i=1 à k faire C[i]:=0
+    Pour j=1 à longueur[A] faire:
+        C[A[j]]:=C[A[j]]+1
+    // C[i] contient le nb d'éléments de A égaux à i
+    Pour i=2 à k faire:
+        C[i]:=C[i]+C[i-1]
+    Pour j:=longueur[A] à 1 faire:
+        B[C[A[j]]]:=A[j]
+        C[A[j]]:=C[A[j]]-1
+```
+- **Complexité** : O(n+k) avec n taille de A
+
+
+#### Tri rapide 
+```
+Tri_Rapide(A,p,r)
+    si p<r alors:
+        q:=Partitionner(A,p,r)
+        Tri_Rapide(A,p,q)
+        Tri_Rapide(A,q+1,r)
+
+Partitionner(A,p,r)
+    x:=A[p]; i:=p-1; j:=r+1
+    Tant que vrai faire:
+        répéter j:=j-1 jusqu'à A[j]<=x
+        répéter i:=i+1 jusqu'à A[i]>=x
+        si i<j alors échanger(A[i],A[j])
+            sinon retourner j
+```
+- **Pire des cas** : O(n^2)  
+- **Meilleur des cas** : O(n log(n))
 
 #### TRI FUSION
 On divise successivement le tableau. Par exemple si on a t[7] alors on aura 7 sous-tableaux qu'on va ensuite fusionner grâce à la fonction Interclassement.
@@ -347,6 +414,11 @@ Tri_fusion(T:tableau; i,j:entier)
 - il y a ln(n)/ln(2) niveaux d'interclassement  
 **Complexité tri fusion** : O(nln(n))
 
+
+#### DEFINITIONS
+- un tri est **stable** s'il ne modifie pas l'ordre initial de deux éléments de clés égales.
+- un tri est **interne** s'il s'effectue sur des données présentes en mémoire centrale.
+- un tri **externe** s'effectue sur des données résidant en mémoire secondaire.
 
 ## ANNALES
 ### insertion d'un noeud et mise à jour du delta de hauteur + rééquilibrage
@@ -391,3 +463,24 @@ leur complexité spatiale
 temporaire de taille n
 > appels récursifs : profondeur de récursion en O(log n)
 
+
+### VRAC DU COURS
+- Arbre complet d'arité k : arbre d'arité k pour lequel
+toutes les feuilles ont la même profondeur et tous les
+nœuds internes ont pour degré k
+- nombre de noeuds internes d'un arbre binaire complet de hauteur h vaut 2^h - 1
+- arbre parfait : Arbre binaire dont les feuilles sont
+situées sur deux niveaux au plus, l'avant dernier
+niveau est complet, et les feuilles du dernier niveau
+sont regroupées le plus à gauche possible
+
+
+• Dans Partitionner :
+• Les indices i et j ne font jamais référence à un élément de A
+hors de l’intervalle [p..r].
+• L’indice j n’est pas égal à r quand Partitionner se termine : le
+découpage n’est jamais trivial.
+• Chaque élément de A[p..j] est inférieur ou égal à chaque
+élément de A[j + 1 .. r] quand Partitionner se termine.
+
+toute la partie sur les graphes ?

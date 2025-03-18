@@ -13,6 +13,8 @@
 ```bash
 grep -E // extended, pareil que egrep
 grep -P // Perl regular expression --> compatible avec des expressions régulières Perl
+grep -G // basic, expression de base
+grep -F // ce qui suit doit être interprété littéralement
 grep -l // liste des fichiers avec match
 grep -L // liste des fichiers sans match
 grep -v // affichage des lignes ne contenant pas la chaîne précisée
@@ -20,6 +22,10 @@ grep -n // affiche les numéros de ligne
 grep -c // compte le nombre de ligne
 grep -o //  show only the part of a line matching PATTERN
 grep -r // récursif : si rechercher dans répertoire
+grep -i // majuscule = minuscule
+grep -w // force pattern to match only whole words
+grep -d // recurse, parcourt tous les fichiers des repertoires / sous-répertoires
+grep -H // affiche le nom des fichiers avec la ligne ayant la correspondance
 ```
 - On peut cumuler des options (par ex grep -vcE)
 - on peut utiliser un pipe | par exemple sur un echo
@@ -205,16 +211,16 @@ chage mathou
 - **utilisation de chmod**
 - lit "à l'envers", si on met qu'un chiffre change les permissions des autres, deux chiffres change les permissions des autres et du groupe, trois chiffres permissions de tout le monde
 
-- On n epeut pas exécuter un fichier pour lequel on a les permissions d'exécution mais pas de lecture
+- On ne peut pas exécuter un fichier pour lequel on a les permissions d'exécution mais pas de lecture
 
 - **répertoire /tmp**
-```bash
-// accessible en écriture pour tous
-// le sticky bit est activé pour que tout le monde ne puisse pas modifier des fichiers qu'ils n'ont pas créés
-// t sur la permission des autres
-// un utilisateur peut seulement supprimer les fichiers qu'il a créé
-drwxrwxrwt 19 root root  16K Dec 21 18:58 tmp
-```
+
+- accessible en écriture pour tous
+- le sticky bit est activé pour que tout le monde ne puisse pas modifier des fichiers qu'ils n'ont pas créés
+- t sur la permission des autres
+- un utilisateur peut seulement supprimer les fichiers qu'il a créé
+>drwxrwxrwt 19 root root  16K Dec 21 18:58 tmp
+
 
 ```bash
 // soit un fichier avec bit SUID activé
@@ -226,14 +232,15 @@ chmod u-x file.sh // on retire l'exécution à l'utilisateur
 - **Créer un répertoire dont les fichiers sont détenus par le groupe users et ne peuvent être supprimés que par l'utilisateur qui les a créés**
 ```bash
 mkdir Box
-chown :users Box/  // le groupe propriétaire est désormais users, l'utilisateur est inchangé
+chown :users Box/  
+// le groupe propriétaire est désormais users l'utilisateur est inchangé
 
 // w+x pour le groupe
 // setgid permet aux fichiers de Box d'hériter du groupe du répertoire
 chmod g+wxs Bow/
 
 // sticky bit pour que seul le proprio d'un fichier puisse le supp
-chmod o+t Box/   // 
+chmod o+t Box/
 ```
 
 ```bash
@@ -266,6 +273,114 @@ groupdel $group
 ls -l /usr/bin/passwd
 -> -rwsr-xr-x 1 root root 42096 mag 17  2015 /usr/bin/passwd
 // La commande passwd a le bit SUID activé (le quatrième caractère de cette ligne), ce qui signifie que la commande est exécutée avec les privilèges du propriétaire du fichier (donc root). C’est ainsi que les utilisateurs ordinaires peuvent modifier leur mot de passe.
+```
+
+## MAKEFILE
+Soit la structure d'un programme suivante :
+```
+mystr.c
+mystr.h
+
+mystrchrn.c
+mystrchrn.h
+
+mystrinv.c
+mystrinv.h
+
+mystrncat.c
+mystrncat.h
+
+mystrcpy.c
+mystrcpy.h
+
+mystrupdown.c
+mystrupdown.h
+
+teststring.c --> main
+
+dans les .h :
+
+#ifndef fichier
+#define fichier
+#include <stdio.h>
+#include <string.h>
+// struct ou fonctions
+#endif //fichier
+```
+1er jet du makefile : 
+```
+teststring : teststring.o mystr.o mystrchrn.o mystrinv.o mystrncat.o \
+        mystrcpy.o mystrupdown.o
+        gcc -o tesstring teststring.o mystr.o mystrchrn.o mystrinv.o \
+                mystrncat.o mystrcpy.o mystrupdown.o
+
+teststring.o : teststring.c mystr.h mystrchrn.h mystrinv.h mystrncat.h \
+        mystrcpy.h mystrupdown.h
+        gcc -c teststring.c
+
+mystr.o : mystr.c mystr.h
+        gcc -c mystr.c
+
+mystrchrn.o : mystrchrn.c mystrchrn.h
+        gcc -c mystrchrn.c
+
+mystrinv.o : mystrinv.c mystrinv.h
+        gcc -c mystrinv.c
+
+mystrncat.o : mystrncat.c mystrncat.h
+        gcc -c mystrncat.c
+
+mystrcpy.o : mystrcpy.c mystrcpy.h
+        gcc -c mystrcpy.c
+
+mystrupdown.o : mystrupdown.c mystrupdown.h
+        gcc -c mystrupdown.c
+
+clean :
+        rm teststring teststring.o mystr.o mystrchrn.o mystrinv.o \
+                mystrncat.o mystrcpy.o mystrupdown.o
+```
+première amélioration :
+```
+OBJS = teststring.o mystr.o mystrchrn.o mystrinv.o mystrncat.o \
+        mystrcpy.o mystrupdown.o
+
+teststring : $(OBJS)
+        gcc -o testring $(OBJS)
+
+teststring.o : teststring.c mystr.h mystrchrn.h mystrinv.h mystrncat.h \
+        mystrcpy.h mystrupdown.h
+        gcc -c teststring.c
+
+mystr.o : mystr.c mystr.h
+        gcc -c mystr.c
+
+mystrchrn.o : mystrchrn.c mystrchrn.h
+        gcc -c mystrchrn.c
+
+mystrinv.o : mystrinv.c mystrinv.h
+        gcc -c mystrinv.c
+
+mystrncat.o : mystrncat.c mystrncat.h
+        gcc -c mystrncat.c
+
+mystrcpy.o : mystrcpy.c mystrcpy.h
+        gcc -c mystrcpy.c
+
+mystrupdown.o : mystrupdown.c mystrupdown.h
+        gcc -c mystrupdown.c
+
+clean :
+        rm teststring $(OBJS)
+```
+
+2eme amélioration : 
+```
+CC:=gcc
+OBJS = teststring.o mystr.o mystrchrn.o mystrinv.o mystrncat.o \
+        mystrcpy.o mystrupdown.o
+TARGET = teststring
+HEADERS = mystrinv.h, mystrncpy.h, mystrchrn.h, mystrncat.h, mystrupdown.h
 ```
 
 
