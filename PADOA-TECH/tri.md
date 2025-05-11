@@ -94,7 +94,7 @@ function merge(left, right) {
 
 ## TRI RAPIDE O(nlogn)
 - récursif
-- place un pivot en dernier, met dans la liste de gauche tous les éléments plus petits et dans la liste de droite le pivot puis tous les éléments plus grands, reproduit l'algo sur chaque sous liste jusuq'à n'avoir plus qu'un élément
+- place un pivot en dernier, met dans la liste de gauche tous les éléments plus petits et dans la liste de droite le pivot puis tous les éléments plus grands, reproduit l'algo sur chaque sous liste jusqu'à n'avoir plus qu'un élément
 - **très rapide (constant), mais moins quand valeurs non uniques**
 ```js
 export function quickSort(arr, left = 0, right = arr.length - 1) {
